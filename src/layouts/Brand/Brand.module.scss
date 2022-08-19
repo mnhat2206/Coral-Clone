@@ -1,0 +1,10 @@
+.wrapper {
+    margin: 0 300px;
+    margin-top: var(--margin-top-brand);
+}
+
+.brand-list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

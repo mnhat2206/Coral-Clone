@@ -1,0 +1,15 @@
+.wrapper {
+    margin-top: var(--line-margin-top-header);
+}
+
+.menu-list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 500;
+    user-select: none;
+}
+
+.menu-item {
+    cursor: pointer;
+}

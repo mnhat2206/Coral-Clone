@@ -1,0 +1,50 @@
+@import 'normalize.css';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
+
+:root {
+    --text-color: #0b0b0b;
+    --white-color: #fff;
+    --max-width-header: 1320px;
+    --width-left-right-header: 280px;
+    --width-product-img-featured: 424px;
+    --height-product-img-featured: 544px;
+
+    // margin
+    --line-margin-top-header: 26px;
+    --margin-top-brand: 90px;
+    --margin-top-main: 140px;
+
+    // border-radius
+    --border-top-left-radius-featured: 160px;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+}
+
+//
+
+button {
+    border: 1px solid transparent;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
