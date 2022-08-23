@@ -1,0 +1,37 @@
+{
+  "files": {
+    "main.css": "./static/css/main.794f4a51.css",
+    "main.js": "./static/js/main.cdd489b2.js",
+    "static/js/787.9549748b.chunk.js": "./static/js/787.9549748b.chunk.js",
+    "static/media/background-banner.png": "./static/media/background-banner.a38d4f57e4ae278104e2.png",
+    "static/media/image-category-1.png": "./static/media/image-category-1.ab8536d7175e583e2a7a.png",
+    "static/media/featured-img.png": "./static/media/featured-img.9fb98eda74471b391707.png",
+    "static/media/p3.png": "./static/media/p3.9877d66a540b38d58fd9.png",
+    "static/media/p5.png": "./static/media/p5.a53049f4dd2161dda477.png",
+    "static/media/p1.png": "./static/media/p1.ef68052f93a2bf96521e.png",
+    "static/media/image-category-2.png": "./static/media/image-category-2.28542df5306fdc43c796.png",
+    "static/media/image-category-4.png": "./static/media/image-category-4.8d38862f451f6b6206af.png",
+    "static/media/p4.png": "./static/media/p4.5fc8050a0e093d32ba4e.png",
+    "static/media/image-category-5.png": "./static/media/image-category-5.85e46e8b76c6006fe3db.png",
+    "static/media/image-category-3.png": "./static/media/image-category-3.4a7c3d5384a34d329663.png",
+    "static/media/p7.png": "./static/media/p7.47a4eadff6820af64ce5.png",
+    "static/media/fio6.png": "./static/media/fio6.f770fafd7d474fb231b1.png",
+    "static/media/fio5.png": "./static/media/fio5.b7c7b5829c48392720b6.png",
+    "static/media/p2.png": "./static/media/p2.1a498ae7006ba57b3e77.png",
+    "static/media/fio4.png": "./static/media/fio4.a4aa3bfb76a7b0fe5210.png",
+    "static/media/fio1.png": "./static/media/fio1.ed3db93f514c71aff561.png",
+    "static/media/fio2.png": "./static/media/fio2.7e921ddcc49f6f5bc168.png",
+    "static/media/fio3.png": "./static/media/fio3.cc8e8d0bac835dd22489.png",
+    "static/media/p6.png": "./static/media/p6.78db949df7545f0a0782.png",
+    "static/media/p8.png": "./static/media/p8.4a46994c02c3090e1240.png",
+    "static/media/logo-background.png": "./static/media/logo-background.8458abb1b1e1bbea44d6.png",
+    "index.html": "./index.html",
+    "main.794f4a51.css.map": "./static/css/main.794f4a51.css.map",
+    "main.cdd489b2.js.map": "./static/js/main.cdd489b2.js.map",
+    "787.9549748b.chunk.js.map": "./static/js/787.9549748b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.794f4a51.css",
+    "static/js/main.cdd489b2.js"
+  ]
+}
