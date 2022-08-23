@@ -6,19 +6,18 @@ import { GraphicBrand, SSalvaBrand, GolvenStudioBrand, FurnitureBrand, TravelBra
 const cx = classNames.bind(styles);
 
 function Brand() {
-    const brandListApi = [
-        <GraphicBrand />,
-        <SSalvaBrand />,
-        <GolvenStudioBrand />,
-        <FurnitureBrand />,
-        <TravelBrand />,
-    ];
+    const brandListApi = [GraphicBrand, SSalvaBrand, GolvenStudioBrand, FurnitureBrand, TravelBrand];
 
     return (
         <div className={cx('wrapper')}>
             <ul className={cx('brand-list')}>
                 {brandListApi.map((brand, index) => {
-                    return <li key={index}>{brand}</li>;
+                    let Layout = brand;
+                    return (
+                        <li key={index}>
+                            <Layout />
+                        </li>
+                    );
                 })}
             </ul>
         </div>

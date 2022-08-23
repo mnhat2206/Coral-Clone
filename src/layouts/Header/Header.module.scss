@@ -1,5 +1,9 @@
+:root {
+    --f-width-left-right-header: 280px;
+}
+
 .wrapper {
-    max-width: var(--max-width-header);
+    max-width: var(--max-width-main);
     margin: 0 auto;
     padding: 31px 0;
 }
@@ -12,7 +16,7 @@
 }
 
 .search-wrapper {
-    width: var(--width-left-right-header);
+    width: var(--f-width-left-right-header);
 }
 
 .icon-search {
@@ -58,7 +62,7 @@
 }
 
 .right-header {
-    width: var(--width-left-right-header);
+    width: var(--f-width-left-right-header);
     display: flex;
     justify-content: flex-end;
     align-items: center;

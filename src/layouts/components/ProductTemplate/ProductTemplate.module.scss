@@ -1,0 +1,19 @@
+.wrapper {
+    margin: 0 auto;
+    margin-top: var(--margin-top-main);
+    width: var(--max-width-main);
+}
+
+.title {
+    font-weight: 500;
+    font-size: 4.5rem;
+    line-height: 5.3rem;
+    letter-spacing: 0.1em;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.product-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}

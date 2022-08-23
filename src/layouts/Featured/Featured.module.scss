@@ -1,5 +1,12 @@
+:root {
+    // Featured layout
+    --f-width-product-img-featured: 424px;
+    --f-height-product-img-featured: 544px;
+    --f-border-top-left-radius-featured: 160px;
+}
+
 .wrapper {
-    max-width: var(--max-width-header);
+    max-width: var(--max-width-main);
     margin: 0 auto;
     margin-top: 80px;
     padding-bottom: 60px;
@@ -21,6 +28,7 @@
     font-size: 7.4rem;
     line-height: 5.5rem;
     color: #000;
+    user-select: none;
 }
 
 .text {
@@ -30,6 +38,7 @@
     font-size: 2.7rem;
     line-height: 5.5rem;
     text-transform: capitalize;
+    user-select: none;
 }
 
 .button-shop {
@@ -40,6 +49,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    &:hover {
+        cursor: pointer;
+        background-color: #363636;
+    }
 }
 
 .text-button {
@@ -61,17 +75,17 @@
 .img-product {
     position: relative;
     z-index: 1;
-    width: var(--width-product-img-featured);
-    height: var(--height-product-img-featured);
-    border-radius: var(--border-top-left-radius-featured) 0;
+    width: var(--f-width-product-img-featured);
+    height: var(--f-height-product-img-featured);
+    border-radius: var(--f-border-top-left-radius-featured) 0;
 }
 
 .border {
     position: absolute;
     top: 20px;
     left: 20px;
-    width: var(--width-product-img-featured);
-    height: var(--height-product-img-featured);
+    width: var(--f-width-product-img-featured);
+    height: var(--f-height-product-img-featured);
     border: 2px solid #afafaf;
-    border-radius: var(--border-top-left-radius-featured) 0;
+    border-radius: var(--f-border-top-left-radius-featured) 0;
 }
