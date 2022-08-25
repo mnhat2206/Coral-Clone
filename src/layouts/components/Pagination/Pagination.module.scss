@@ -1,0 +1,38 @@
+.wrapper {
+    width: var(--max-width-main);
+    margin-top: 80px;
+}
+
+.page-controller {
+    display: flex;
+    justify-content: center;
+
+    .page-btn.active {
+        background-color: #fb6d6d;
+    }
+
+    .page-btn:first-child {
+        margin-left: 0;
+    }
+    .page-btn {
+        margin-left: 8px;
+        padding: 8px 30px;
+        font-size: 2rem;
+        line-height: 2.4rem;
+        background-color: transparent;
+        outline: none;
+
+        &:hover {
+            cursor: pointer;
+            background-color: #ffe9e985;
+        }
+    }
+
+    .page-btn.page-btn-right,
+    .page-btn.page-btn-left {
+        cursor: pointer;
+        &:hover {
+            background-color: transparent;
+        }
+    }
+}

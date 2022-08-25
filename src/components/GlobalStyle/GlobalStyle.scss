@@ -57,10 +57,13 @@ html *::-webkit-scrollbar-track {
 
 button {
     border: 1px solid transparent;
+    outline: none;
 }
 
 a {
     text-decoration: none;
+    outline: none;
+    color: var(--text-color);
 }
 
 ul {

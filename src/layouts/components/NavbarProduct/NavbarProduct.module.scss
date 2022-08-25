@@ -5,7 +5,6 @@
 }
 
 .category {
-    width: 32%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -18,6 +17,7 @@
 }
 
 .category-item {
+    padding: 6px 24px;
     &:hover {
         cursor: pointer;
         color: var(--text-color);
@@ -31,6 +31,7 @@
 }
 
 .btn-container {
+    position: relative;
     min-width: 88px;
     height: 32px;
     background-color: #000;
@@ -38,11 +39,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0.9;
+    opacity: 1;
+    z-index: 9999;
 
     &:hover {
         cursor: pointer;
-        opacity: 1;
     }
 
     .icon-btn {
@@ -51,7 +52,7 @@
 
     .btn-text {
         font-weight: 400;
-        font-size: 1.6rem;
+        font-size: 1.5rem;
         line-height: 2.2rem;
         text-transform: capitalize;
         margin-left: 8px;
@@ -59,5 +60,112 @@
 
     .btn-text.btn-show-all {
         margin-left: 0;
+    }
+}
+
+.filter {
+    display: none;
+    position: absolute;
+    top: calc(100% - -8px);
+    // top: 0;
+    right: 0;
+    width: var(--max-width-main);
+    padding-bottom: 60px;
+    color: var(--text-color);
+    border-top: 1px solid #ccc;
+    background-color: var(--white-color);
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+    .filter-item {
+        .title {
+            margin-top: 20px;
+            font-weight: 500;
+            font-size: 3.2rem;
+            line-height: 3.2rem;
+        }
+
+        .list-check {
+            margin-top: 10px;
+            .checkbox-group {
+                margin-top: 20px;
+            }
+        }
+    }
+}
+
+.checkbox-container {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    font-size: 1.8rem;
+    line-height: 1.8rem;
+    cursor: pointer;
+    user-select: none;
+
+    .checkbox-text {
+        display: block;
+        padding-top: 3px;
+    }
+    /* On mouse-over, add a grey background color */
+    &:hover input ~ .checkmark {
+        background-color: #ffe9e985;
+    }
+
+    /* When the checkbox is checked, add a blue background */
+    input:checked ~ .checkmark {
+        background-color: #fb6d6d;
+    }
+
+    /* Show the checkmark when checked */
+    input:checked ~ .checkmark:after {
+        display: block;
+    }
+
+    /* Create a custom checkbox */
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 22px;
+        width: 22px;
+        background-color: #fff;
+        border: 1px solid #d5dde1;
+        border-radius: 4px;
+
+        /* Style the checkmark/indicator */
+        &::after {
+            content: '';
+            position: absolute;
+            display: none;
+            left: 6px;
+            top: 0px;
+            width: 5px;
+            height: 12px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+    }
+}
+
+.active-filter {
+    &::before {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        height: 10px;
+        width: 100%;
+        background-color: transparent;
+    }
+
+    &:hover {
+        .filter {
+            display: grid;
+        }
     }
 }

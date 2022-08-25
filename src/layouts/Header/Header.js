@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
-
 import classNames from 'classnames/bind';
 import { MdOutlineCancel } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 
 import styles from './Header.module.scss';
 import { SearchIcon, Logo, Account, Shopping } from '~/components/Icons';
@@ -68,7 +68,9 @@ function Header() {
                     )}
                 </div>
                 <div className={cx('logo')}>
-                    <Logo />
+                    <Link to="/">
+                        <Logo />
+                    </Link>
                 </div>
                 <div className={cx('right-header')}>
                     <div className={cx('account')}>

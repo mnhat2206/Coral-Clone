@@ -1,3 +1,4 @@
+import { useCallback, useLayoutEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 
 import styles from './ProductTemplate.module.scss';
@@ -6,14 +7,40 @@ import CardProduct from '~/layouts/components/CardProduct';
 
 const cx = classNames.bind(styles);
 
-function NewProduct({ btnShowAll = false, titleName, products = [] }) {
+function ProductTemplate({ isNotMarginTop = false, btnShowAll = false, titleName, products = [] }) {
+    const [listProduct, setListProduct] = useState([]);
+    // console.log('[template state]', listProduct);
+
+    useLayoutEffect(() => {
+        setListProduct(products);
+    }, [products]);
+    console.log('[template]', products);
+
+    const handleClickNavbar = useCallback(
+        (styId) => {
+            console.log('[function]', products);
+
+            if (styId !== 0) {
+                const result = products.filter((product) => product.styId === styId);
+                setListProduct(result);
+            } else {
+                setListProduct(products);
+            }
+            return styId;
+            // eslint-disable-next-line react-hooks/exhaustive-deps
+        },
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        [products],
+    );
+
     let numberItem = 0;
+
     return (
-        <div className={cx('wrapper')}>
+        <div className={cx('wrapper', isNotMarginTop && 'not-margin-top')}>
             <h3 className={cx('title')}>{titleName}</h3>
-            <NavbarProduct btnShowAll={btnShowAll} />
+            <NavbarProduct btnShowAll={btnShowAll} onClickNavbar={handleClickNavbar} />
             <div className={cx('product-container')}>
-                {products.map((product, index) => {
+                {listProduct.map((product, index) => {
                     let notMarginLeft = false;
                     let notMarginTop = false;
 
@@ -50,4 +77,4 @@ function NewProduct({ btnShowAll = false, titleName, products = [] }) {
     );
 }
 
-export default NewProduct;
+export default ProductTemplate;
