@@ -20,8 +20,6 @@ function ProductListing({ products = [], titleProducts = 'Products', numberProdu
 
     const displayProducts = products.slice(pageVisited, pageVisited + productsPerPage);
 
-    console.log('[displayProducts]', displayProducts);
-
     const changePage = ({ selected }) => {
         setPageNumber(selected);
     };

@@ -6,6 +6,7 @@ import WeddingAndParty from '~/pages/WeddingAndParty';
 import ToysAndEntertainment from '~/pages/ToysAndEntertainment';
 import ArtAndCollectibles from '~/pages/ArtAndCollectibles';
 import CraftSuppliesAndTools from '~/pages/CraftSuppliesAndTools';
+import ProductDetailPage from '~/pages/ProductDetailPage';
 
 export const publicRoutes = [
     {
@@ -39,5 +40,9 @@ export const publicRoutes = [
     {
         path: '/craft',
         component: CraftSuppliesAndTools,
+    },
+    {
+        path: '/:productId',
+        component: ProductDetailPage,
     },
 ];

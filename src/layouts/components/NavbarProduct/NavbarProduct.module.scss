@@ -115,7 +115,7 @@
 
     /* When the checkbox is checked, add a blue background */
     input:checked ~ .checkmark {
-        background-color: #fb6d6d;
+        background-color: var(--main-color);
     }
 
     /* Show the checkmark when checked */

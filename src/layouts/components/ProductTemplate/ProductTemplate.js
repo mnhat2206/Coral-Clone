@@ -9,12 +9,10 @@ const cx = classNames.bind(styles);
 
 function ProductTemplate({ isNotMarginTop = false, btnShowAll = false, titleName, products = [] }) {
     const [listProduct, setListProduct] = useState([]);
-    // console.log('[template state]', listProduct);
 
     useLayoutEffect(() => {
         setListProduct(products);
     }, [products]);
-    console.log('[template]', products);
 
     const handleClickNavbar = useCallback(
         (styId) => {
@@ -63,11 +61,13 @@ function ProductTemplate({ isNotMarginTop = false, btnShowAll = false, titleName
                         <CardProduct
                             notMarginLeft={notMarginLeft}
                             notMarginTop={notMarginTop}
+                            id={product.id}
                             key={product.id}
                             srcImg={product.srcImage}
                             title={product.title}
                             category={product.categoryName}
                             price={product.price}
+                            discount={product.discount}
                             label={product.label}
                         />
                     );
