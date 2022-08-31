@@ -1,0 +1,42 @@
+.wrapper:first-child {
+    margin-left: 0;
+}
+
+.wrapper {
+    display: inline-block;
+    margin-left: 12px;
+    user-select: none;
+}
+
+.custom-select {
+    height: 38px;
+    min-width: 72px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.text {
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.6rem;
+}
+
+.arrow {
+    padding: 4px;
+    height: 8px;
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+}
+
+.arrow-up {
+    padding-top: 12px;
+}
+
+.arrow-down {
+    padding-bottom: 12px;
+}

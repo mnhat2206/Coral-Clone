@@ -7,6 +7,7 @@ import ToysAndEntertainment from '~/pages/ToysAndEntertainment';
 import ArtAndCollectibles from '~/pages/ArtAndCollectibles';
 import CraftSuppliesAndTools from '~/pages/CraftSuppliesAndTools';
 import ProductDetailPage from '~/pages/ProductDetailPage';
+import Cart from '~/pages/Cart';
 
 export const publicRoutes = [
     {
@@ -44,5 +45,9 @@ export const publicRoutes = [
     {
         path: '/:productId',
         component: ProductDetailPage,
+    },
+    {
+        path: '/cart',
+        component: Cart,
     },
 ];

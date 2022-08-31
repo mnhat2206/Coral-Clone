@@ -5,17 +5,34 @@ import { useParams } from 'react-router-dom';
 import styles from './ProductDetail.module.scss';
 import { Favorite } from '~/components/Icons';
 import { products } from '~/api/product';
+import { useStore } from '~/hooks';
+import { actions } from '~/store';
 
 const cx = classNames.bind(styles);
 
 function ProductDetail() {
-    const [color, setColor] = useState('white');
+    const [color, setColor] = useState('White');
     const [size, setSize] = useState('XS');
     const [quantity, setQuantity] = useState(1);
 
     const getParams = useParams();
     const productId = getParams.productId;
     const product = products.find((item) => item.id === +productId);
+
+    const [, dispatch] = useStore();
+
+    const handleCart = () => {
+        dispatch(
+            actions.add_to_cart({
+                productId,
+                color,
+                size,
+                quantity,
+                isConfirm: false,
+            }),
+        );
+        alert('Add to cart success');
+    };
 
     const handleColor = (e) => {
         setColor(e.currentTarget.attributes.color.value);
@@ -57,22 +74,22 @@ function ProductDetail() {
                 <div className={cx('color')}>
                     <span
                         onClick={handleColor}
-                        color="white"
+                        color="White"
                         className={cx('common-border-color', 'color-white', color === 'white' && 'active')}
                     ></span>
                     <span
                         onClick={handleColor}
-                        color="black"
+                        color="Black"
                         className={cx('common-border-color', 'color-black', color === 'black' && 'active')}
                     ></span>
                     <span
                         onClick={handleColor}
-                        color="blue"
+                        color="Blue"
                         className={cx('common-border-color', 'color-blue', color === 'blue' && 'active')}
                     ></span>
                     <span
                         onClick={handleColor}
-                        color="gray"
+                        color="Gray"
                         className={cx('common-border-color', 'color-gray', color === 'gray' && 'active')}
                     ></span>
                 </div>
@@ -104,12 +121,14 @@ function ProductDetail() {
                     </label>
                 </div>
                 <div className={cx('btn-container')}>
-                    <button className={cx('btn-action')}>Add to cart</button>
+                    <button onClick={() => handleCart()} className={cx('btn-action')}>
+                        Add to cart
+                    </button>
                     <button className={cx('btn-action')}>
                         <Favorite />
                     </button>
                 </div>
-                <span className={cx('sub-title')}>{`Price : ${product.discount || product.price}`}</span>
+                <span className={cx('sub-title')}>{`Price : $${product.discount || product.price}`}</span>
                 <span className={cx('description')}>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec consequat lorem. Maecenas
                     elementum at diam consequat bibendum. Mauris iaculis fringilla ex, sit amet semper libero facilisis

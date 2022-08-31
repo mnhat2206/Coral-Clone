@@ -1,0 +1,33 @@
+.wrapper {
+    display: inline-block;
+    margin-left: 12px;
+    user-select: none;
+}
+
+.label-group {
+    height: 38px;
+    width: 80px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+
+    .quantity {
+        font-weight: 500;
+        font-size: 1.6rem;
+        line-height: 1.6rem;
+        text-align: center;
+        width: 26px;
+        border: none;
+        outline: none;
+    }
+}
+
+.action {
+    font-weight: 500;
+    font-size: 1.6rem;
+    line-height: 1.6rem;
+    padding: 4px;
+}

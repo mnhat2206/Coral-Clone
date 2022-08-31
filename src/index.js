@@ -4,13 +4,16 @@ import App from '~/App';
 import reportWebVitals from './reportWebVitals';
 
 import GlobalStyle from '~/components/GlobalStyle';
+import { CartProvider } from '~/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     // <React.StrictMode>
-    <GlobalStyle>
-        <App />
-    </GlobalStyle>,
+    <CartProvider>
+        <GlobalStyle>
+            <App />
+        </GlobalStyle>
+    </CartProvider>,
 
     // </React.StrictMode>,
 );

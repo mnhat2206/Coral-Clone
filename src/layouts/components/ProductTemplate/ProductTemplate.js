@@ -16,8 +16,6 @@ function ProductTemplate({ isNotMarginTop = false, btnShowAll = false, titleName
 
     const handleClickNavbar = useCallback(
         (styId) => {
-            console.log('[function]', products);
-
             if (styId !== 0) {
                 const result = products.filter((product) => product.styId === styId);
                 setListProduct(result);
