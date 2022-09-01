@@ -1,5 +1,7 @@
 import { useMemo } from 'react';
 import classNames from 'classnames/bind';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import styles from './ShoppingCart.module.scss';
 import { Favorite, Delete } from '~/components/Icons';
@@ -48,7 +50,29 @@ function ShoppingCart() {
     };
 
     const handleCheckout = () => {
-        dispatch(actions.proceed_to_checkout());
+        const productConfirm = productToCarts.filter((item) => item.isConfirm === true);
+        if (productConfirm.length > 0) {
+            dispatch(actions.proceed_to_checkout(productConfirm));
+            toast.success('Checkout Success', {
+                position: 'top-right',
+                autoClose: 2500,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        } else {
+            toast.warn('You need to select the product you want to pay for', {
+                position: 'top-right',
+                autoClose: 2500,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        }
     };
 
     return (
@@ -111,6 +135,7 @@ function ShoppingCart() {
                     )}
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 }

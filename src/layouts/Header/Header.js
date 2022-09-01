@@ -95,7 +95,7 @@ function Header() {
                                             <img className={cx('product-img')} src={product.srcImage} alt="" />
                                             <div className={cx('product-description')}>
                                                 <h4 className={cx('product-title')}>{product.title}</h4>
-                                                <span className={cx('product-price')}>{product.price}</span>
+                                                <span className={cx('product-price')}>{`$${product.price}`}</span>
                                             </div>
                                         </li>
                                     ))}

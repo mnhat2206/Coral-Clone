@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import classNames from 'classnames/bind';
 import { useParams } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import styles from './ProductDetail.module.scss';
 import { Favorite } from '~/components/Icons';
@@ -31,7 +33,15 @@ function ProductDetail() {
                 isConfirm: false,
             }),
         );
-        alert('Add to cart success');
+        toast.success('Add to cart success', {
+            position: 'top-right',
+            autoClose: 600,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
     };
 
     const handleColor = (e) => {
@@ -135,6 +145,7 @@ function ProductDetail() {
                     sit amet. Nunc ut aliquet metus.
                 </span>
             </div>
+            <ToastContainer />
         </div>
     );
 }

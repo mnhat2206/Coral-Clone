@@ -6,7 +6,9 @@ import {
     PROCEED_TO_CHECKOUT,
 } from './contants';
 
-const configLocal = () => JSON.parse(localStorage.getItem('Cart')) || [];
+const CART_KEY = 'CART';
+
+const configLocal = () => JSON.parse(localStorage.getItem(CART_KEY)) || [];
 
 export const initState = {
     carts: configLocal(),
@@ -28,7 +30,7 @@ function reducer(state, action) {
                 newCarts.push(data);
             }
 
-            localStorage.setItem('Cart', JSON.stringify(newCarts));
+            localStorage.setItem(CART_KEY, JSON.stringify(newCarts));
 
             return {
                 ...state,
@@ -46,7 +48,7 @@ function reducer(state, action) {
                 ...dispatchUpdateData,
             };
 
-            localStorage.setItem('Cart', JSON.stringify(newCarts));
+            localStorage.setItem(CART_KEY, JSON.stringify(newCarts));
 
             return {
                 ...state,
@@ -57,7 +59,7 @@ function reducer(state, action) {
             const id = action.payload;
             const foundIndex = newCarts.findIndex((product) => +product.productId === +id);
             newCarts[foundIndex].isConfirm = !newCarts[foundIndex].isConfirm;
-            localStorage.setItem('Cart', JSON.stringify(newCarts));
+            localStorage.setItem(CART_KEY, JSON.stringify(newCarts));
             return {
                 ...state,
                 carts: configLocal(),
@@ -66,26 +68,21 @@ function reducer(state, action) {
             const idProduct = action.payload;
             const foundIndexProduct = newCarts.findIndex((product) => +product.productId === +idProduct);
             newCarts.splice(foundIndexProduct, 1);
-            localStorage.setItem('Cart', JSON.stringify(newCarts));
+            localStorage.setItem(CART_KEY, JSON.stringify(newCarts));
             return {
                 ...state,
                 carts: configLocal(),
             };
         case PROCEED_TO_CHECKOUT:
-            const productConfirm = newCarts.filter((item) => item.isConfirm === true);
-            if (productConfirm.length > 0) {
-                const pushId = [];
-                productConfirm.forEach((item) => {
-                    pushId.push(+item.productId);
-                });
-                if (pushId.length > 0) {
-                    const productRemaining = newCarts.filter((item) => item.isConfirm === false);
-                    localStorage.setItem('Cart', JSON.stringify(productRemaining));
-                    console.log('[RESPONSE]', JSON.stringify(pushId));
-                    alert('Checkout Success');
-                }
-            } else {
-                alert('You need to select the product you want to pay for');
+            const pushId = [];
+            const productConfirm = action.payload;
+            productConfirm.forEach((item) => {
+                pushId.push(+item.productId);
+            });
+            if (pushId.length > 0) {
+                const productRemaining = newCarts.filter((item) => item.isConfirm === false);
+                localStorage.setItem(CART_KEY, JSON.stringify(productRemaining));
+                console.log('[RESPONSE]', JSON.stringify(pushId));
             }
             return {
                 ...state,

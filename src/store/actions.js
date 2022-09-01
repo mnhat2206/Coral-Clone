@@ -34,10 +34,10 @@ function delete_product_to_cart(payload) {
     };
 }
 
-function proceed_to_checkout() {
+function proceed_to_checkout(payload) {
     return {
         type: PROCEED_TO_CHECKOUT,
-        payload: '',
+        payload,
     };
 }
 
