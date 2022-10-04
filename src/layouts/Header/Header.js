@@ -35,7 +35,7 @@ function Header() {
             return;
         }
 
-        fetch(`http://localhost:3002/api/products?name_like=${encodeURIComponent(debounceValue)}`)
+        fetch(`https://json-server-coral.herokuapp.com/api/products?name_like=${encodeURIComponent(debounceValue)}`)
             .then((res) => res.json())
             .then((data) => {
                 setProducts(data.filter((item, index) => index < 5));
@@ -77,7 +77,7 @@ function Header() {
         state.carts.forEach((item) => {
             productIdToCarts.push(item.productId);
         });
-        fetch(`http://localhost:3002/api/products?id=${productIdToCarts.join('&id=')}`)
+        fetch(`https://json-server-coral.herokuapp.com/api/products?id=${productIdToCarts.join('&id=')}`)
             .then((res) => res.json())
             .then((data) => {
                 const result = [];

@@ -4,11 +4,11 @@ import { FiLogOut } from 'react-icons/fi';
 
 import styles from './Management.module.scss';
 import {
-    DashboardIcons,
+    // DashboardIcons,
     CustomersIcons,
     ProductsIcons,
     CategoriesIcons,
-    OrdersIcons,
+    // OrdersIcons,
     ProfileIcons,
 } from '~/components/Icons';
 // import avatar from '~/asset/img/follow-on-instagram/fio1.png';

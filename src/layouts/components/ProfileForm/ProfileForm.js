@@ -65,7 +65,7 @@ function ProfileForm() {
             body: JSON.stringify(data),
         };
 
-        const res = await fetch(`http://localhost:3002/api/users/${user.id}`, options);
+        const res = await fetch(`https://json-server-coral.herokuapp.com/api/users/${user.id}`, options);
         try {
             const resData = await res.json();
             dispatch(actions.user_login(resData));

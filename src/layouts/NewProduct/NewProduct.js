@@ -6,7 +6,7 @@ function NewProduct() {
     const [newProducts, setNewProducts] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:3002/api/products/navbar?isNew=true`)
+        fetch(`https://json-server-coral.herokuapp.com/api/products/navbar?isNew=true`)
             .then((res) => res.json())
             .then((data) => {
                 setNewProducts(data.data.filter((product, index) => index < 4));

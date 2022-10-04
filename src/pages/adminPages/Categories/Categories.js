@@ -38,7 +38,7 @@ function Categories() {
     useEffect(() => {
         if (!debounce.trim()) {
             fetch(
-                `http://localhost:3002/api/categories?isParent=false&_sort=createdAt&_order=desc&isActive=${selectValue.value}&_page=${page}&_limit=5`,
+                `https://json-server-coral.herokuapp.com/api/categories?isParent=false&_sort=createdAt&_order=desc&isActive=${selectValue.value}&_page=${page}&_limit=5`,
             )
                 .then((res) => res.json())
                 .then((resData) => {
@@ -51,9 +51,9 @@ function Categories() {
         }
 
         fetch(
-            `http://localhost:3002/api/categories?isParent=false&q=${encodeURIComponent(debounce)}&isActive=${
-                selectValue.value
-            }&_limit=5`,
+            `https://json-server-coral.herokuapp.com/api/categories?isParent=false&q=${encodeURIComponent(
+                debounce,
+            )}&isActive=${selectValue.value}&_limit=5`,
         )
             .then((res) => res.json())
             .then((resData) => {
@@ -102,7 +102,7 @@ function Categories() {
     const middlewareHandleAction = (isActive) => {
         return async (e) => {
             const categoryId = getParent(e.currentTarget);
-            const isSuccessfully = await fetch(`http://localhost:3002/api/categories/${categoryId}`, {
+            const isSuccessfully = await fetch(`https://json-server-coral.herokuapp.com/api/categories/${categoryId}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
@@ -119,7 +119,7 @@ function Categories() {
                 });
             if (isSuccessfully) {
                 fetch(
-                    `http://localhost:3002/api/categories?_sort=createdAt&_order=desc&isActive=${selectValue.value}&_page=${page}&_limit=5`,
+                    `https://json-server-coral.herokuapp.com/api/categories?_sort=createdAt&_order=desc&isActive=${selectValue.value}&_page=${page}&_limit=5`,
                 )
                     .then((res) => res.json())
                     .then((resData) => {

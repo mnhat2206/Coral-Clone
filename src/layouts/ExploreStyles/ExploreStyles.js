@@ -15,7 +15,7 @@ function ExploreStyles() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch('http://localhost:3002/api/categories/main?_sort=updateAt&_order=desc')
+        fetch('https://json-server-coral.herokuapp.com/api/categories/main?_sort=updateAt&_order=desc')
             .then((res) => res.json())
             .then((data) => {
                 setStylesFashion(data);
@@ -40,7 +40,7 @@ function ExploreStyles() {
                         <img className={cx('img')} src={item.thumbnailUrl} alt="" />
                         <div className={cx('style-intro')}>
                             <span>{item.name}</span>
-                            <span>{`${item.totalProduct} Product`}</span>
+                            <span>{`${item.productsTotal} Product`}</span>
                         </div>
                     </div>
                 ))}

@@ -40,7 +40,7 @@ function ProductManagement() {
             body: JSON.stringify(data),
         };
 
-        fetch('http://localhost:3002/product', options);
+        fetch('https://json-server-coral.herokuapp.com/product', options);
     };
 
     useEffect(() => {
@@ -52,7 +52,7 @@ function ProductManagement() {
     });
 
     // useEffect(() => {
-    //     fetch('http://localhost:3002/product')
+    //     fetch('https://json-server-coral.herokuapp.com/product')
     //         .then((res) => res.json())
     //         .then((data) => setProducts(data));
     // }, []);
