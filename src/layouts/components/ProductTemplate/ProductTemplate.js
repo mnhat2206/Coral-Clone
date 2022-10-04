@@ -20,7 +20,6 @@ function ProductTemplate({
     useLayoutEffect(() => {
         setListProduct(products);
     }, [products]);
-    console.log(products);
 
     let numberItem = 0;
 

@@ -38,7 +38,6 @@ function ShoppingCart() {
                         ...product,
                     });
                 });
-                console.log(result);
                 setProductsToCart(result);
             });
     }, [state.carts]);

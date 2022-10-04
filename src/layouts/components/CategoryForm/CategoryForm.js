@@ -26,7 +26,6 @@ function CategoryForm() {
         isMain: false,
         categoryParentId: '',
     });
-    console.log(category);
     // Handle Select
     const [options, setOptions] = useState([]);
 
@@ -67,7 +66,6 @@ function CategoryForm() {
                             };
                         }),
                     );
-                    console.log(data);
                     const convertData = data.data;
                     setCategory(convertData);
                     imgSrcCurrent.current = convertData.thumbnailUrl;
@@ -241,7 +239,6 @@ function CategoryForm() {
 
     // Selected
     const handleSelectChange = (e) => {
-        console.log(e);
         setCategory({
             ...category,
             categoryParentId: e.value,

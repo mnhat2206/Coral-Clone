@@ -142,7 +142,17 @@ function ProductForm() {
                 fileRef.current.value = null;
                 setImage(null);
             })
-            .catch((e) => console.log('Error:', e));
+            .catch((e) => {
+                toast.error(`Error: ${e}`, {
+                    position: 'top-right',
+                    autoClose: 1000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            });
     };
 
     const handleUpload = async () => {

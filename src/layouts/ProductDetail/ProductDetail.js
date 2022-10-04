@@ -54,7 +54,7 @@ function ProductDetail() {
     };
 
     const handleSize = (e) => {
-        setSize(e.currentTarget.attributes.size.value.value);
+        setSize(e.currentTarget.attributes.sizevalue.value);
     };
 
     const handleChange = (e) => {
