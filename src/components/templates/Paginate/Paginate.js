@@ -11,7 +11,7 @@ function Paginate({ pageCount, forcePage, handleChangePage, containerClassNameCu
             previousLabel={'Previous'}
             nextLabel={'Next'}
             pageCount={pageCount}
-            forcePage={forcePage}
+            forcePage={pageCount > 0 ? forcePage : -1}
             onPageChange={handleChangePage}
             pageLinkClassName={cx('page-link')}
             activeClassName={cx('page-active')}
