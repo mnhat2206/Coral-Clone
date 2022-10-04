@@ -95,6 +95,7 @@ function Header() {
 
     const handleLogout = () => {
         dispatch(user_logout());
+        navigate('/', { replace: true });
     };
 
     const handleProfile = () => {
