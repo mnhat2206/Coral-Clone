@@ -37,14 +37,14 @@ function Management({ menuId, children }) {
                     <span className={cx('user-name')}>{user.userName}</span>
                 </div>
                 <ul className={cx('menu')}>
-                    <li id={1} className={cx('menu-item', +menuId === 1 && 'active')}>
+                    {/* <li id={1} className={cx('menu-item', +menuId === 1 && 'active')}>
                         <Link to={'/admin/dashboard'} className={cx('link')}>
                             <div className={cx('item-wrapper')}>
                                 <DashboardIcons />
                                 <span>Dashboard</span>
                             </div>
                         </Link>
-                    </li>
+                    </li> */}
                     <li id={2} className={cx('menu-item', +menuId === 2 && 'active')}>
                         <Link to={'/admin/customers'} className={cx('link')}>
                             <div className={cx('item-wrapper')}>
@@ -69,14 +69,14 @@ function Management({ menuId, children }) {
                             </div>
                         </Link>
                     </li>
-                    <li id={5} className={cx('menu-item', +menuId === 5 && 'active')}>
+                    {/* <li id={5} className={cx('menu-item', +menuId === 5 && 'active')}>
                         <Link to={'/admin/orders'} className={cx('link')}>
                             <div className={cx('item-wrapper')}>
                                 <OrdersIcons />
                                 <span>Orders</span>
                             </div>
                         </Link>
-                    </li>
+                    </li> */}
                 </ul>
                 <ul className={cx('menu', 'menu-bottom')}>
                     <li id={6} className={cx('menu-item', +menuId === 6 && 'active')}>
