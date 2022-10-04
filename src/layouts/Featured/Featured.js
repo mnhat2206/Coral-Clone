@@ -1,12 +1,23 @@
 import classNames from 'classnames/bind';
+import { useNavigate } from 'react-router-dom';
 
 import styles from './Featured.module.scss';
 import featuredImg from '~/asset/img/featured-img.png';
 import { Shopping } from '~/components/Icons';
+import { useStore } from '~/hooks';
+import { param_category_id } from '~/store/actions';
 
 const cx = classNames.bind(styles);
 
 function Featured() {
+    const [, dispatch] = useStore();
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate('/category/Clothing%20%26%20Shoes');
+        dispatch(param_category_id('502d2262-0335-4050-9fb3-2246d8eddc37'));
+    };
+
     return (
         <div className={cx('wrapper')}>
             <div className={cx('featured-wrapper')}>
@@ -17,7 +28,9 @@ function Featured() {
                     </h3>
                     <button className={cx('button-shop')}>
                         <Shopping width={30} height={30} color={'#fff'} />
-                        <span className={cx('text-button')}>Shop Now</span>
+                        <span onClick={handleClick} className={cx('text-button')}>
+                            Shop Now
+                        </span>
                     </button>
                 </div>
                 <div className={cx('sample')}>

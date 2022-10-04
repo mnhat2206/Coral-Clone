@@ -47,7 +47,7 @@ function CardProduct({
                     <div className={cx('text-footer')}>
                         <span className={cx('name')}>{category}</span>
                         <span className={cx('price', discount && 'cross')}>{`$${price}`}</span>
-                        {discount && <span className={cx('price', 'discount')}>{`$${discount}`}</span>}
+                        {!!discount && <span className={cx('price', 'discount')}>{`$${discount}`}</span>}
                     </div>
                 </div>
             </Link>

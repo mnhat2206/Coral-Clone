@@ -1,27 +1,40 @@
-import { useState, useMemo } from 'react';
-import ReactPaginate from 'react-paginate';
+import { useState, useEffect } from 'react';
 import classNames from 'classnames/bind';
 
 import styles from './ProductListing.module.scss';
+import { Paginate } from '~/components/templates';
 import ProductTemplate from '~/layouts/components/ProductTemplate';
 // import Pagination from '~/layouts/components/Pagination';
 
 const cx = classNames.bind(styles);
 
-function ProductListing({ products = [], titleProducts = 'Products', numberProducts = 0 }) {
+function ProductListing({ categoriesChild, products = [], titleProducts = 'Products', numberProducts = 0 }) {
     const productsPerPage = 12;
     const [pageNumber, setPageNumber] = useState(0);
+    const [categoryProducts, setCategoryProducts] = useState([]);
 
-    const pageVisited = useMemo(() => pageNumber * productsPerPage, [pageNumber]);
-
-    const pageCount = useMemo(() => {
-        return Math.ceil(products.length / productsPerPage);
+    useEffect(() => {
+        setCategoryProducts(products);
     }, [products]);
 
-    const displayProducts = products.slice(pageVisited, pageVisited + productsPerPage);
+    const pageVisited = pageNumber * productsPerPage;
+
+    const pageCount = Math.ceil(categoryProducts.length / productsPerPage);
+    const displayProducts = categoryProducts.slice(pageVisited, pageVisited + productsPerPage);
 
     const changePage = ({ selected }) => {
         setPageNumber(selected);
+    };
+
+    const handleClickNavbar = (id) => {
+        if (id !== 0) {
+            const result = products.filter((product) => product.categoryId === id);
+            setCategoryProducts(result);
+        } else {
+            setCategoryProducts(products);
+        }
+        setPageNumber(0);
+        return id;
     };
 
     return (
@@ -32,23 +45,15 @@ function ProductListing({ products = [], titleProducts = 'Products', numberProdu
                     <span className={cx('number-product')}>{`${numberProducts.toLocaleString('de-DE')} Products`}</span>
                 </div>
             </div>
-            <ProductTemplate isNotMarginTop={true} products={displayProducts} />
-
-            <ReactPaginate
-                previousLabel={'Previous'}
-                nextLabel={'Next'}
-                pageCount={pageCount}
-                pageLinkClassName={cx('page-link')}
-                onPageChange={changePage}
-                activeClassName={cx('page-active')}
-                disabledClassName={cx('page-disable')}
-                containerClassName={cx('page-controller')}
-                previousClassName={cx('page-btn', 'page-btn-margin')}
-                previousLinkClassName={cx('page-link')}
-                nextClassName={cx('page-btn', 'page-btn-margin')}
-                nextLinkClassName={cx('page-link')}
-                pageClassName={cx('page-btn')}
+            <ProductTemplate
+                isNotMarginTop={true}
+                products={displayProducts}
+                categoriesChild={categoriesChild}
+                handleClickNavbar={handleClickNavbar}
             />
+
+            <Paginate pageCount={pageCount} forcePage={pageNumber} handleChangePage={changePage} />
+
             {/* <Pagination /> */}
         </div>
     );

@@ -48,12 +48,24 @@
             margin-left: 12px;
             width: 36px;
             height: 36px;
-            border-radius: 50%;
+            // border-radius: 50%;
             cursor: pointer;
         }
 
         .common-border-color.active {
-            border: 3px solid var(--main-color);
+            position: relative;
+
+            &::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: -8px;
+                height: 4px;
+                width: 100%;
+                background-color: var(--main-color);
+                // border-bottom: 3px solid var(--main-color);
+            }
         }
 
         .color-white {

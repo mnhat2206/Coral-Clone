@@ -1,0 +1,122 @@
+.container-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.group-header {
+    display: flex;
+    align-items: center;
+    height: 44px;
+    padding: 12px;
+    border-radius: 8px;
+    background-color: #ebebeb;
+}
+
+.input-search {
+    width: 300px;
+    margin-right: 4px;
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+.select-group {
+    display: flex;
+
+    .group-header.select {
+        padding: 0;
+        width: 160px;
+    }
+
+    .group-header + .group-header {
+        margin-left: 12px;
+    }
+}
+
+.select-label {
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+}
+
+.select-option {
+    font-size: 1.6rem;
+    line-height: 1.8rem;
+    margin-left: 4px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+.container-footer {
+    margin-top: 40px;
+    width: 100%;
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        font-weight: 500;
+        font-size: 1.6rem;
+        line-height: 1.8rem;
+
+        .header {
+            border: 1px solid transparent;
+        }
+
+        th {
+            padding: 20px;
+            text-align: left;
+            background-color: #d4d4d4;
+            border: 1px solid transparent;
+        }
+    }
+}
+
+.table-content {
+    height: 100px;
+    font-weight: 400;
+    border: 1px solid #d4d4d4;
+
+    .first-column {
+        display: flex;
+        align-items: center;
+
+        .column-img {
+            height: 80px;
+            width: 80px;
+            border-radius: 12px;
+        }
+
+        span {
+            margin-left: 24px;
+        }
+    }
+
+    .action-column {
+        width: 160px;
+        span {
+            display: inline-block;
+            width: 50px;
+            font-size: 2.2rem;
+
+            &:hover {
+                cursor: pointer;
+                font-size: 2.6rem;
+            }
+        }
+
+        span + span {
+            margin-left: 8px;
+        }
+    }
+
+    td {
+        padding: 20px;
+    }
+}
+
+// custom pagination
+.paginate-container {
+    margin-top: 24px !important;
+}

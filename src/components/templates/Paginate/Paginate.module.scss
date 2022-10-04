@@ -1,0 +1,46 @@
+.page-controller {
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+
+    .page-btn.page-active {
+        background-color: #fb6d6d;
+        &:hover {
+            background-color: #fb6d6d;
+            cursor: default;
+        }
+    }
+
+    .page-btn.page-disable {
+        &:hover {
+            cursor: default;
+            background-color: transparent;
+        }
+    }
+
+    .page-btn {
+        font-size: 2rem;
+        line-height: 2.4rem;
+        background-color: transparent;
+        outline: none;
+
+        &:hover {
+            cursor: pointer;
+            background-color: #ffe9e985;
+        }
+
+        .page-link {
+            display: block;
+            padding: 12px 40px;
+        }
+    }
+
+    .page-btn.page-btn-margin {
+        cursor: pointer;
+        &:hover {
+            background-color: transparent;
+        }
+    }
+}

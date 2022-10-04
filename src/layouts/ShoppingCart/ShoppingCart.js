@@ -1,33 +1,58 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import classNames from 'classnames/bind';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 
 import styles from './ShoppingCart.module.scss';
 import { Favorite, Delete } from '~/components/Icons';
 import CustomSelect from '~/layouts/components/CustomSelect';
 import CustomQuantity from '~/layouts/components/CustomQuantity';
 import { Link } from 'react-router-dom';
-import { useCart, useStore } from '~/hooks';
+import { useStore } from '~/hooks';
 import { actions } from '~/store';
 
 const cx = classNames.bind(styles);
 
 function ShoppingCart() {
-    const productToCarts = useCart();
+    const [productsToCart, setProductsToCart] = useState([]);
+
+    const [state, dispatch] = useStore();
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const productIdToCarts = [];
+        state.carts.forEach((item) => {
+            productIdToCarts.push(item.productId);
+        });
+        fetch(`http://localhost:3002/api/products?id=${productIdToCarts.join('&id=')}`)
+            .then((res) => res.json())
+            .then((data) => {
+                const result = [];
+                data.forEach((product) => {
+                    const productLocal = state.carts.find((item) => item.productId === product.id);
+
+                    result.push({
+                        ...productLocal,
+                        ...product,
+                    });
+                });
+                console.log(result);
+                setProductsToCart(result);
+            });
+    }, [state.carts]);
 
     const size = ['XS', 'S', 'M', 'L'];
-    const color = ['White', 'Black', 'Blue', 'Gray'];
+    const color = ['white', 'black', 'blue', 'gray'];
 
     const total = useMemo(() => {
-        const result = productToCarts.reduce((prevValue, currentObject) => {
+        const result = productsToCart.reduce((prevValue, currentObject) => {
             const currentValue = currentObject.price * currentObject.quantity;
             return (prevValue += currentValue);
         }, 0);
         return result;
-    }, [productToCarts]);
-
-    const [, dispatch] = useStore();
+    }, [productsToCart]);
 
     function getParent(inputElement) {
         while (inputElement.parentElement) {
@@ -50,7 +75,21 @@ function ShoppingCart() {
     };
 
     const handleCheckout = () => {
-        const productConfirm = productToCarts.filter((item) => item.isConfirm === true);
+        if (Object.keys(state.user).length <= 0) {
+            toast.warn('You need to login to make a purchase', {
+                position: 'top-right',
+                autoClose: 1800,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                onClose: () => navigate('/login', { replace: true }),
+            });
+            return;
+        }
+
+        const productConfirm = productsToCart.filter((item) => item.isConfirm === true);
         if (productConfirm.length > 0) {
             dispatch(actions.proceed_to_checkout(productConfirm));
             toast.success('Checkout Success', {
@@ -79,7 +118,7 @@ function ShoppingCart() {
         <div className={cx('wrapper')}>
             <h3 className={cx('cart-title')}>Cart</h3>
             <ul className={cx('cart-container')}>
-                {productToCarts.map((product) => (
+                {productsToCart.map((product) => (
                     <li key={product.id} id={product.id} className={cx('cart-item')}>
                         <img className={cx('product-img')} src={product.srcImage} alt="" />
                         <div className={cx('product-wrapper')}>
@@ -125,10 +164,10 @@ function ShoppingCart() {
             <div className={cx('cart-footer')}>
                 <span className={cx('total')}>{`Total: $${total || 0}`}</span>
                 <div className={cx('button-container')}>
-                    <Link to={'/jewelry'}>
+                    <Link to={`/`}>
                         <span className={cx('button-cart', 'button-continue')}>Continue shopping</span>
                     </Link>
-                    {productToCarts.length > 0 && (
+                    {productsToCart.length > 0 && (
                         <span onClick={() => handleCheckout()} className={cx('button-cart', 'button-checkout')}>
                             Proceed to checkout
                         </span>

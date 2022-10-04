@@ -1,27 +1,49 @@
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import classNames from 'classnames/bind';
 
 import styles from './ExploreStyles.module.scss';
-import { apiImages } from '~/api/exploreStyles';
+import { useStore } from '~/hooks';
+import { actions } from '~/store';
 
 const cx = classNames.bind(styles);
 
 function ExploreStyles() {
+    const [styleFashion, setStylesFashion] = useState([]);
+
+    const [, dispatch] = useStore();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        fetch('http://localhost:3002/api/categories/main?_sort=updateAt&_order=desc')
+            .then((res) => res.json())
+            .then((data) => {
+                setStylesFashion(data);
+            });
+    }, []);
+
+    const handleClick = (categoryId, categoryName) => {
+        dispatch(actions.param_category_id(categoryId));
+        navigate(`/category/${categoryName}`, { replace: true });
+    };
+
     return (
         <div className={cx('wrapper')}>
             <div className={cx('container')}>
-                {apiImages.map((img, index) => (
-                    <div key={img.id} className={cx('item', `item-${index + 1}`)}>
-                        <img className={cx('img')} src={img.srcImage} alt="" />
+                {styleFashion.map((item, index) => (
+                    <div
+                        onClick={() => handleClick(item.categoryParentId, item.categoryParentName.name)}
+                        id={item.id}
+                        key={item.id}
+                        className={cx('item', `item-${index + 1}`)}
+                    >
+                        <img className={cx('img')} src={item.thumbnailUrl} alt="" />
                         <div className={cx('style-intro')}>
-                            <span>{img.styleName}</span>
-                            <span>{`${img.numberOfProductStyle} Product`}</span>
+                            <span>{item.name}</span>
+                            <span>{`${item.totalProduct} Product`}</span>
                         </div>
                     </div>
                 ))}
-                {/* <div className={cx('item', 'item-2')}>Img2</div>
-                <div className={cx('item', 'item-3')}>Img3</div>
-                <div className={cx('item', 'item-4')}>Img4</div>
-                <div className={cx('item', 'item-5')}>Img5</div> */}
             </div>
             <div className={cx('wrapper-text')}>
                 <span className={cx('text')}>Explore new and popular styles</span>

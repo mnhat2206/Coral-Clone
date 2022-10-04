@@ -1,49 +1,43 @@
 import classNames from 'classnames/bind';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import styles from './NavbarMenu.module.scss';
+import { useStore } from '~/hooks';
+import { param_category_id } from '~/store/actions';
 
 const cx = classNames.bind(styles);
 
 function NavbarMenu() {
-    const apiMenu = [
-        {
-            name: 'Jewelry & Accessories',
-            path: '/jewelry',
-        },
-        {
-            name: 'Clothing & Shoes',
-            path: '/clothing',
-        },
-        {
-            name: 'Home & Living',
-            path: '/living',
-        },
-        {
-            name: 'Wedding & Party',
-            path: '/wedding',
-        },
-        {
-            name: 'Toys & Entertainment',
-            path: '/toys',
-        },
-        {
-            name: 'Art & Collectibles',
-            path: '/art',
-        },
-        {
-            name: 'Craft Supplies & Tools',
-            path: '/craft',
-        },
-    ];
+    const [menu, setMenu] = useState([]);
+
+    const [, dispatch] = useStore();
+
+    useEffect(() => {
+        fetch('http://localhost:3002/api/categories?_sort=updateAt&_order=desc&isParent=true&isMenu=true')
+            .then((res) => res.json())
+            .then((data) => {
+                setMenu(data);
+            });
+    }, []);
+
+    const handleClick = (categoryId) => {
+        dispatch(param_category_id(categoryId));
+    };
 
     return (
         <div className={cx('wrapper')}>
             <ul className={cx('menu-list')}>
-                {apiMenu.map((menu, index) => {
+                {menu.map((menu, index) => {
+                    if (index >= 7) return <></>;
+
                     return (
-                        <li className={cx('menu-item')} key={index}>
-                            <Link className={cx('')} to={menu.path}>
+                        <li className={cx('menu-item')} key={menu.id}>
+                            <Link
+                                onClick={() => handleClick(menu.id)}
+                                className={cx('')}
+                                to={`/category/${encodeURIComponent(menu.name)}`}
+                            >
                                 {menu.name}
                             </Link>
                         </li>

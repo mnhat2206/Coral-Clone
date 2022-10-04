@@ -1,2 +1,2 @@
-export { default as useStore } from './UseStore';
-export { default as useCart } from './useCart';
+export { default as useStore } from './useStore';
+export { default as useDebounce } from './useDebounce';

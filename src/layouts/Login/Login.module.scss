@@ -1,0 +1,119 @@
+.wrapper {
+    min-height: 100vh;
+    display: flex;
+    background-color: #f6f7f8;
+}
+
+.container {
+    margin: auto;
+    display: flex;
+    background-color: var(--white-color);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+
+    .left {
+        width: 500px;
+        min-height: 800px;
+    }
+
+    .img {
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .right {
+        width: 630px;
+        min-height: 800px;
+
+        .title {
+            margin-top: 112px;
+            font-weight: 600;
+            font-size: 48px;
+            line-height: 72px;
+            text-align: center;
+        }
+
+        .form {
+            margin-top: 40px;
+            display: grid;
+            justify-content: center; /* Horizontal */
+        }
+    }
+
+    .error-message {
+        display: block;
+        margin-top: 32px;
+        text-align: center;
+        font-size: 1.6rem;
+        line-height: 1.6rem;
+        color: red;
+    }
+
+    .button-form {
+        margin-top: 48px;
+        margin-bottom: 40px;
+        text-align: center;
+
+        .authen {
+            width: 340px;
+            height: 60px;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 2.6rem;
+            line-height: 3.9rem;
+            color: var(--white-color);
+            background-color: #1894c9;
+            cursor: pointer;
+        }
+
+        .text {
+            margin-top: 24px;
+            display: block;
+            font-weight: 400;
+            font-size: 1.8rem;
+            line-height: 2.7rem;
+        }
+
+        .or {
+            display: block;
+            margin-top: 36px;
+            font-weight: 500;
+            font-size: 2.6rem;
+            line-height: 3.9rem;
+        }
+
+        .login-container {
+            margin-top: 24px;
+
+            .login-with:first-child {
+                margin-left: 0;
+            }
+
+            .login-with {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 288px;
+                height: 62px;
+                margin-left: 24px;
+                border-radius: 8px;
+                border: 1px solid #d2d2d2;
+
+                span {
+                    font-weight: 500;
+                    font-size: 1.6rem;
+                    line-height: 2.4rem;
+                    margin-left: 12px;
+                }
+
+                .icons {
+                    width: 38px;
+                    height: 38px;
+                }
+            }
+        }
+    }
+}
+
+.custom-field {
+    width: 500px !important;
+}

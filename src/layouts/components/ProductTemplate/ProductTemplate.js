@@ -1,4 +1,4 @@
-import { useCallback, useLayoutEffect, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 
 import styles from './ProductTemplate.module.scss';
@@ -7,34 +7,27 @@ import CardProduct from '~/layouts/components/CardProduct';
 
 const cx = classNames.bind(styles);
 
-function ProductTemplate({ isNotMarginTop = false, btnShowAll = false, titleName, products = [] }) {
+function ProductTemplate({
+    isNotMarginTop = false,
+    btnShowAll = false,
+    titleName,
+    categoriesChild,
+    products = [],
+    handleClickNavbar,
+}) {
     const [listProduct, setListProduct] = useState([]);
 
     useLayoutEffect(() => {
         setListProduct(products);
     }, [products]);
-
-    const handleClickNavbar = useCallback(
-        (styId) => {
-            if (styId !== 0) {
-                const result = products.filter((product) => product.styId === styId);
-                setListProduct(result);
-            } else {
-                setListProduct(products);
-            }
-            return styId;
-            // eslint-disable-next-line react-hooks/exhaustive-deps
-        },
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        [products],
-    );
+    console.log(products);
 
     let numberItem = 0;
 
     return (
         <div className={cx('wrapper', isNotMarginTop && 'not-margin-top')}>
             <h3 className={cx('title')}>{titleName}</h3>
-            <NavbarProduct btnShowAll={btnShowAll} onClickNavbar={handleClickNavbar} />
+            <NavbarProduct btnShowAll={btnShowAll} onClickNavbar={handleClickNavbar} categories={categoriesChild} />
             <div className={cx('product-container')}>
                 {listProduct.map((product, index) => {
                     let notMarginLeft = false;
@@ -62,8 +55,8 @@ function ProductTemplate({ isNotMarginTop = false, btnShowAll = false, titleName
                             id={product.id}
                             key={product.id}
                             srcImg={product.srcImage}
-                            title={product.title}
-                            category={product.categoryName}
+                            title={product.name}
+                            category={product.categoryOption ? product.categoryOption.name : ''}
                             price={product.price}
                             discount={product.discount}
                             label={product.label}
