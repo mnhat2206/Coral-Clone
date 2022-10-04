@@ -3,6 +3,9 @@
     "homepage": "https://nhatnmps06759.github.io/Coral-Clone/",
     "version": "0.1.0",
     "private": false,
+    "engines": {
+        "node": "18.x"
+    },
     "dependencies": {
         "@testing-library/jest-dom": "^5.16.5",
         "@testing-library/react": "^13.3.0",
