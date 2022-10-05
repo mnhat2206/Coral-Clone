@@ -74,6 +74,7 @@ function Login() {
                             Coral
                         </Link>
                     </h3>
+                    <span style={{ textAlign: 'center', display: 'block' }}>Login with admin rights: admin/admin</span>
                     <div className={cx('form')}>
                         <Field
                             name="User name:"
