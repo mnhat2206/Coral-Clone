@@ -38,7 +38,7 @@ function Customers() {
     useEffect(() => {
         if (!debounce.trim()) {
             fetch(
-                `https://json-server-coral.herokuapp.com/api/users?isCustomer=true&isActive=${selectValue.value}&_page=${page}&_limit=5`,
+                `https://coral-server.onrender.com/api/users?isCustomer=true&isActive=${selectValue.value}&_page=${page}&_limit=5`,
             )
                 .then((res) => res.json())
                 .then((resData) => {
@@ -51,7 +51,7 @@ function Customers() {
         }
 
         fetch(
-            `https://json-server-coral.herokuapp.com/api/users?q=${encodeURIComponent(debounce)}&isActive=${
+            `https://coral-server.onrender.com/api/users?q=${encodeURIComponent(debounce)}&isActive=${
                 selectValue.value
             }&_limit=5`,
         )
@@ -98,7 +98,7 @@ function Customers() {
 
         return async (event) => {
             const userId = getParent(event.currentTarget);
-            const isSuccessfully = await fetch(`https://json-server-coral.herokuapp.com/api/users/${userId}`, {
+            const isSuccessfully = await fetch(`https://coral-server.onrender.com/api/users/${userId}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
@@ -115,7 +115,7 @@ function Customers() {
                 });
             if (isSuccessfully) {
                 fetch(
-                    `https://json-server-coral.herokuapp.com/api/users?isCustomer=true&isActive=${selectValue.value}&_page=${page}&_limit=5`,
+                    `https://coral-server.onrender.com/api/users?isCustomer=true&isActive=${selectValue.value}&_page=${page}&_limit=5`,
                 )
                     .then((res) => res.json())
                     .then((resData) => {

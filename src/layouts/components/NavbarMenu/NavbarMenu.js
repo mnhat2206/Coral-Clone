@@ -14,9 +14,7 @@ function NavbarMenu() {
     const [, dispatch] = useStore();
 
     useEffect(() => {
-        fetch(
-            'https://json-server-coral.herokuapp.com/api/categories?_sort=updateAt&_order=desc&isParent=true&isMenu=true',
-        )
+        fetch('https://coral-server.onrender.com/api/categories?_sort=updateAt&_order=desc&isParent=true&isMenu=true')
             .then((res) => res.json())
             .then((data) => {
                 setMenu(data);

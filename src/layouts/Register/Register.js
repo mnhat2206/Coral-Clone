@@ -51,7 +51,7 @@ function Register() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),
         };
-        fetch('https://json-server-coral.herokuapp.com/api/register', options)
+        fetch('https://coral-server.onrender.com/api/register', options)
             .then((res) => {
                 return res.json();
             })

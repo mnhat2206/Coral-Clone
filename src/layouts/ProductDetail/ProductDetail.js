@@ -21,7 +21,7 @@ function ProductDetail() {
     const getParams = useParams();
     const productId = getParams.productId;
     useEffect(() => {
-        fetch(`https://json-server-coral.herokuapp.com/api/products?id=${productId}`)
+        fetch(`https://coral-server.onrender.com/api/products?id=${productId}`)
             .then((res) => res.json())
             .then((data) => setProduct(data[0]));
     }, [productId]);

@@ -41,7 +41,7 @@ function Login() {
             },
             body: JSON.stringify(data),
         };
-        fetch(`https://json-server-coral.herokuapp.com/api/login`, options)
+        fetch(`https://coral-server.onrender.com/api/login`, options)
             .then((res) => {
                 return res.json();
             })

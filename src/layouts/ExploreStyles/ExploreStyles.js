@@ -15,7 +15,7 @@ function ExploreStyles() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch('https://json-server-coral.herokuapp.com/api/categories/main?_sort=updateAt&_order=desc')
+        fetch('https://coral-server.onrender.com/api/categories/main?_sort=updateAt&_order=desc')
             .then((res) => res.json())
             .then((data) => {
                 setStylesFashion(data);

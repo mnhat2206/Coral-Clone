@@ -55,7 +55,7 @@ function CategoryForm() {
 
     useEffect(() => {
         if (params.categoryId) {
-            fetch(`https://json-server-coral.herokuapp.com/api/category/categoryParent?id=${params.categoryId}`)
+            fetch(`https://coral-server.onrender.com/api/category/categoryParent?id=${params.categoryId}`)
                 .then((res) => res.json())
                 .then((data) => {
                     setOptions(
@@ -71,7 +71,7 @@ function CategoryForm() {
                     imgSrcCurrent.current = convertData.thumbnailUrl;
                 });
         } else {
-            fetch(`https://json-server-coral.herokuapp.com/api/category/categoryParent`)
+            fetch(`https://coral-server.onrender.com/api/category/categoryParent`)
                 .then((res) => res.json())
                 .then((data) => {
                     setOptions(
@@ -119,7 +119,7 @@ function CategoryForm() {
             },
             body: JSON.stringify(data),
         };
-        fetch('https://json-server-coral.herokuapp.com/api/categories', options)
+        fetch('https://coral-server.onrender.com/api/categories', options)
             .then(() => {
                 setCategory({
                     name: '',
@@ -179,7 +179,7 @@ function CategoryForm() {
             },
             body: JSON.stringify(data),
         };
-        fetch(`https://json-server-coral.herokuapp.com/api/categories/${id}`, options)
+        fetch(`https://coral-server.onrender.com/api/categories/${id}`, options)
             .then(() => {
                 toast.success('Update is successfully', {
                     position: 'top-right',

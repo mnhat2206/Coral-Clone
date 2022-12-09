@@ -6,7 +6,7 @@ function BestSellers() {
     const [newProducts, setNewProducts] = useState([]);
 
     useEffect(() => {
-        fetch(`https://json-server-coral.herokuapp.com/api/products/navbar?isNew=true&isBestSeller=true`)
+        fetch(`https://coral-server.onrender.com/api/products/navbar?isNew=true&isBestSeller=true`)
             .then((res) => res.json())
             .then((data) => {
                 setNewProducts(data.data.filter((product, index) => index < 4));

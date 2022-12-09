@@ -48,7 +48,7 @@ function ProductsAdmin() {
     useEffect(() => {
         if (!debounce.trim()) {
             fetch(
-                `https://json-server-coral.herokuapp.com/api/products?_sort=createdAt&_order=desc&isActive=${selectValue.value}&_page=${page}&_limit=5`,
+                `https://coral-server.onrender.com/api/products?_sort=createdAt&_order=desc&isActive=${selectValue.value}&_page=${page}&_limit=5`,
             )
                 .then((res) => res.json())
                 .then((resData) => {
@@ -61,7 +61,7 @@ function ProductsAdmin() {
         }
 
         fetch(
-            `https://json-server-coral.herokuapp.com/api/products?q=${encodeURIComponent(debounce)}&isActive=${
+            `https://coral-server.onrender.com/api/products?q=${encodeURIComponent(debounce)}&isActive=${
                 selectValue.value
             }&_limit=5`,
         )
@@ -103,7 +103,7 @@ function ProductsAdmin() {
     const middlewareHandleAction = (isActive) => {
         return async (e) => {
             const productId = getParent(e.currentTarget);
-            const isSuccessfully = await fetch(`https://json-server-coral.herokuapp.com/api/products/${productId}`, {
+            const isSuccessfully = await fetch(`https://coral-server.onrender.com/api/products/${productId}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
@@ -120,7 +120,7 @@ function ProductsAdmin() {
                 });
             if (isSuccessfully) {
                 fetch(
-                    `https://json-server-coral.herokuapp.com/api/products?_sort=createdAt&_order=desc&isActive=${selectValue.value}&_page=${page}&_limit=5`,
+                    `https://coral-server.onrender.com/api/products?_sort=createdAt&_order=desc&isActive=${selectValue.value}&_page=${page}&_limit=5`,
                 )
                     .then((res) => res.json())
                     .then((resData) => {

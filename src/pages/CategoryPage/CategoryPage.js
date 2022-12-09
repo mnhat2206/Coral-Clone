@@ -18,7 +18,7 @@ function CategoryPage() {
     const { slug } = useParams();
 
     useEffect(() => {
-        fetch(`https://json-server-coral.herokuapp.com/api/categoriesChild/${categoryId}`)
+        fetch(`https://coral-server.onrender.com/api/categoriesChild/${categoryId}`)
             .then((res) => res.json())
             .then((data) => {
                 setCategoriesChild(data.categoriesChild);

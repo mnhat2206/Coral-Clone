@@ -58,7 +58,7 @@ function ProductForm() {
 
     useEffect(() => {
         if (params.productId) {
-            fetch(`https://json-server-coral.herokuapp.com/api/product/categories/?productId=${params.productId}`)
+            fetch(`https://coral-server.onrender.com/api/product/categories/?productId=${params.productId}`)
                 .then((res) => res.json())
                 .then((data) => {
                     setOptions(
@@ -74,7 +74,7 @@ function ProductForm() {
                     imgSrcCurrent.current = convertData.srcImage;
                 });
         } else {
-            fetch(`https://json-server-coral.herokuapp.com/api/product/categories`)
+            fetch(`https://coral-server.onrender.com/api/product/categories`)
                 .then((res) => res.json())
                 .then((data) => {
                     setOptions(
@@ -121,7 +121,7 @@ function ProductForm() {
             },
             body: JSON.stringify(data),
         };
-        fetch('https://json-server-coral.herokuapp.com/api/products', options)
+        fetch('https://coral-server.onrender.com/api/products', options)
             .then(() => {
                 toast.success('Create is successfully', {
                     position: 'top-right',
@@ -187,7 +187,7 @@ function ProductForm() {
             },
             body: JSON.stringify(data),
         };
-        fetch(`https://json-server-coral.herokuapp.com/api/products/${id}`, options)
+        fetch(`https://coral-server.onrender.com/api/products/${id}`, options)
             .then(() => {
                 toast.success('Update is successfully', {
                     position: 'top-right',

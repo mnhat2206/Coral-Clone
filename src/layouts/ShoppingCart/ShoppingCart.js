@@ -26,7 +26,7 @@ function ShoppingCart() {
         state.carts.forEach((item) => {
             productIdToCarts.push(item.productId);
         });
-        fetch(`https://json-server-coral.herokuapp.com/api/products?id=${productIdToCarts.join('&id=')}`)
+        fetch(`https://coral-server.onrender.com/api/products?id=${productIdToCarts.join('&id=')}`)
             .then((res) => res.json())
             .then((data) => {
                 const result = [];
