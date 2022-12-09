@@ -122,7 +122,7 @@ function ShoppingCart() {
                         <img className={cx('product-img')} src={product.srcImage} alt="" />
                         <div className={cx('product-wrapper')}>
                             <div className={cx('info-container')}>
-                                <h4 className={cx('product-title')}>{product.title}</h4>
+                                <h4 className={cx('product-title')}>{product.name}</h4>
                                 <span className={cx('product-price')}>{`$${product.price}`}</span>
                             </div>
                             <div className={cx('product-action-wrapper')}>
