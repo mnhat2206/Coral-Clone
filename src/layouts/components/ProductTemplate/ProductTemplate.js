@@ -1,5 +1,7 @@
 import { useLayoutEffect, useState } from 'react';
 import classNames from 'classnames/bind';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 import styles from './ProductTemplate.module.scss';
 import NavbarProduct from '~/layouts/components/NavbarProduct';
@@ -28,40 +30,48 @@ function ProductTemplate({
             <h3 className={cx('title')}>{titleName}</h3>
             <NavbarProduct btnShowAll={btnShowAll} onClickNavbar={handleClickNavbar} categories={categoriesChild} />
             <div className={cx('product-container')}>
-                {listProduct.map((product, index) => {
-                    let notMarginLeft = false;
-                    let notMarginTop = false;
+                {listProduct.length === 0 ? (
+                    <div>
+                        <Skeleton style={{ width: '312px', height: '400px' }} />
+                        <Skeleton style={{ width: '312px', height: '22px', marginTop: '18px' }} />
+                        <Skeleton style={{ width: '312px', height: '18px', marginTop: '13px' }} />
+                    </div>
+                ) : (
+                    listProduct.map((product, index) => {
+                        let notMarginLeft = false;
+                        let notMarginTop = false;
 
-                    // set row one margin-top = 0 because function component NavbarPoduct had margin-bottom
-                    if (index >= 0 && index < 4) {
-                        notMarginTop = true;
-                    } else {
-                        notMarginTop = false;
-                    }
+                        // set row one margin-top = 0 because function component NavbarProduct had margin-bottom
+                        if (index >= 0 && index < 4) {
+                            notMarginTop = true;
+                        } else {
+                            notMarginTop = false;
+                        }
 
-                    // set first product every row margin-left = 0
-                    if (index === numberItem) {
-                        numberItem += 4;
-                        notMarginLeft = true;
-                    } else {
-                        notMarginLeft = false;
-                    }
+                        // set first product every row margin-left = 0
+                        if (index === numberItem) {
+                            numberItem += 4;
+                            notMarginLeft = true;
+                        } else {
+                            notMarginLeft = false;
+                        }
 
-                    return (
-                        <CardProduct
-                            notMarginLeft={notMarginLeft}
-                            notMarginTop={notMarginTop}
-                            id={product.id}
-                            key={product.id}
-                            srcImg={product.srcImage}
-                            title={product.name}
-                            category={product.categoryOption ? product.categoryOption.name : ''}
-                            price={product.price}
-                            discount={product.discount}
-                            label={product.label}
-                        />
-                    );
-                })}
+                        return (
+                            <CardProduct
+                                notMarginLeft={notMarginLeft}
+                                notMarginTop={notMarginTop}
+                                id={product.id}
+                                key={product.id}
+                                srcImg={product.srcImage}
+                                title={product.name}
+                                category={product.categoryOption ? product.categoryOption.name : ''}
+                                price={product.price}
+                                discount={product.discount}
+                                label={product.label}
+                            />
+                        );
+                    })
+                )}
             </div>
         </div>
     );
