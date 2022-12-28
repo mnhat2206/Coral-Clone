@@ -3,6 +3,8 @@ import classNames from 'classnames/bind';
 import { MdOutlineCancel } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 import styles from './Header.module.scss';
 import { SearchIcon, Logo, Account, Shopping } from '~/components/Icons';
@@ -18,6 +20,8 @@ function Header() {
     const [searchValue, setSearchValue] = useState('');
     const [products, setProducts] = useState([]);
     const [productsToCart, setProductsToCart] = useState([]);
+    const [loading, setLoading] = useState('ide');
+    const [loadingCart, setLoadingCart] = useState('ide');
 
     const searchBoxRef = useRef();
 
@@ -34,11 +38,15 @@ function Header() {
             setProducts([]);
             return;
         }
-
+        setLoading('loading');
         fetch(`https://coral-server.onrender.com/api/products?name_like=${encodeURIComponent(debounceValue)}`)
             .then((res) => res.json())
             .then((data) => {
+                setLoading('ide');
                 setProducts(data.filter((item, index) => index < 5));
+            })
+            .catch((err) => {
+                console.log(err);
             });
     }, [debounceValue]);
 
@@ -74,6 +82,7 @@ function Header() {
 
     useEffect(() => {
         const productIdToCarts = [];
+        setLoadingCart('loading');
         state.carts.forEach((item) => {
             productIdToCarts.push(item.productId);
         });
@@ -88,7 +97,7 @@ function Header() {
                         ...product,
                     });
                 });
-
+                setLoadingCart('ide');
                 setProductsToCart(result);
             });
     }, [state.carts]);
@@ -139,8 +148,15 @@ function Header() {
                                                 id={item.id}
                                                 className={cx('box-item')}
                                             >
-                                                <img src={item.srcImage} className={cx('img-item')} alt="" />
-                                                <h4 className={cx('title-item')}>{item.name}</h4>
+                                                {loading === 'loading' ? (
+                                                    <Skeleton className={cx('img-item')} />
+                                                ) : (
+                                                    <img src={item.srcImage} className={cx('img-item')} alt="" />
+                                                )}
+
+                                                <h4 className={cx('title-item')}>
+                                                    {loading === 'loading' ? <Skeleton /> : item.name}
+                                                </h4>
                                             </li>
                                         );
                                     })}
@@ -188,10 +204,18 @@ function Header() {
                                 <ul className={cx('cart-product')}>
                                     {productsToCart.map((product) => (
                                         <li key={product.id} className={cx('product-item')}>
-                                            <img className={cx('product-img')} src={product.srcImage} alt="" />
+                                            {loadingCart === 'loading' ? (
+                                                <Skeleton className={cx('product-img')} />
+                                            ) : (
+                                                <img className={cx('product-img')} src={product.srcImage} alt="" />
+                                            )}
                                             <div className={cx('product-description')}>
-                                                <h4 className={cx('product-title')}>{product.name}</h4>
-                                                <span className={cx('product-price')}>{`$${product.price}`}</span>
+                                                <h4 className={cx('product-title')}>
+                                                    {loadingCart === 'loading' ? <Skeleton /> : product.name}
+                                                </h4>
+                                                <span className={cx('product-price')}>
+                                                    {loadingCart === 'loading' ? <Skeleton /> : `$${product.price}`}
+                                                </span>
                                             </div>
                                         </li>
                                     ))}
